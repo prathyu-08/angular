@@ -6,10 +6,10 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-company-profile',
   standalone: true,
   imports: [CommonModule, FormsModule],
-  templateUrl: './company-profile.component.html',
-  styleUrls: ['./company-profile.component.css']
+  templateUrl: './employer-single.component.html',
+  styleUrls: ['./employer-single.component.css']
 })
-export class CompanyProfileComponent {
+export class EmployerSingleComponent {
 
   contactForm = {
     fullName: '',

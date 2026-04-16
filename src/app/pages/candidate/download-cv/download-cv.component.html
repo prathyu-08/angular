@@ -1,0 +1,212 @@
+<section class="dashboard-section">
+  <div class="container">
+    <div class="dashboard-layout">
+      <aside class="dashboard-sidebar">
+        <div class="sidebar-header">
+          <div class="status-toggle">
+            <div>
+              <span class="status-label">Open to Work</span>
+              <small class="status-note">Visible to recruiters</small>
+            </div>
+            <label class="status-switch" aria-label="Toggle open to work">
+              <input type="checkbox" checked />
+              <span class="status-slider"></span>
+            </label>
+          </div>
+          <h2>Job Seeker</h2>
+          <p>jobseeker&#64;jobsportal.com</p>
+        </div>
+        <ul class="dashboard-nav">
+          <li>
+            <a routerLink="/candidate/dashboard"
+              ><i class="fa-solid fa-gauge"></i> Dashboard</a
+            >
+          </li>
+          <li>
+            <a routerLink="/candidate/edit-profile"
+              ><i class="fa-solid fa-user-pen"></i> Edit Profile</a
+            >
+          </li>
+          <li>
+            <a routerLink="/candidate/build-resume"
+              ><i class="fa-solid fa-id-badge"></i> Build Resume</a
+            >
+          </li>
+          <li class="active">
+            <a routerLink="/candidate/download-cv"
+              ><i class="fa-solid fa-download"></i> Download CV</a
+            >
+          </li>
+          <li>
+            <a routerLink="/candidate/public-profile"
+              ><i class="fa-solid fa-eye"></i> View Public Profile</a
+            >
+          </li>
+          <li>
+            <a routerLink="/candidate/applications"
+              ><i class="fa-solid fa-briefcase"></i> My Job Applications</a
+            >
+          </li>
+          <li>
+            <a routerLink="/candidate/favourites"
+              ><i class="fa-solid fa-heart"></i> My Favourite Jobs</a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><i class="fa-solid fa-bell"></i> Job Alerts</a
+            >
+          </li>
+          <li>
+            <a routerLink="/candidate/manage-resume"
+              ><i class="fa-solid fa-file-pen"></i> Manage Resume</a
+            >
+          </li>
+          <li>
+            <a routerLink="/candidate/messages"
+              ><i class="fa-solid fa-envelope"></i> My Messages</a
+            >
+          </li>
+          <li>
+            <a routerLink="/candidate/followings"
+              ><i class="fa-solid fa-people-group"></i> My Followings</a
+            >
+          </li>
+          <li>
+            <a routerLink="/candidate/packages"
+              ><i class="fa-solid fa-boxes-stacked"></i> Packages</a
+            >
+          </li>
+          <li>
+            <a routerLink="/candidate/payments"
+              ><i class="fa-solid fa-credit-card"></i> Payment History</a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><i class="fa-solid fa-right-from-bracket"></i> Logout</a
+            >
+          </li>
+        </ul>
+      </aside>
+
+      <div class="dashboard-main">
+        <!-- Page Header -->
+        <div class="dashboard-page-header">
+          <div>
+            <h1>Download &amp; Share Your CV</h1>
+            <p>
+              Export pixel-perfect resumes, switch templates instantly, and
+              send secure share links.
+            </p>
+          </div>
+          <div class="d-flex flex-wrap gap-2">
+            <button (click)="downloadPdf()" class="btn btn-outline-primary"
+              ><i class="fa-solid fa-file-export" aria-hidden="true"></i>
+              Download PDF</button
+            >
+            <button (click)="downloadDocx()" class="btn btn-primary"
+              ><i
+                class="fa-solid fa-file-arrow-down"
+                aria-hidden="true"
+              ></i>
+              Download DOCX</button
+            >
+          </div>
+        </div>
+
+        <!-- Action Cards -->
+        <div class="dashboard-actions-grid">
+          <div class="action-card">
+            <span class="icon-square"
+              ><i class="fa-solid fa-shield-check" aria-hidden="true"></i
+            ></span>
+            <h4>ATS Optimized</h4>
+            <p>
+              Clean typography, zero background graphics, fully
+              machine-readable.
+            </p>
+            <button (click)="generateAtsPdf()" class="btn btn-outline-primary btn-sm">
+              Generate ATS PDF
+            </button>
+          </div>
+          <div class="action-card">
+            <span class="icon-square"
+              ><i class="fa-solid fa-star" aria-hidden="true"></i
+            ></span>
+            <h4>Modern Visual</h4>
+            <p>
+              Use accent colors, iconography, and layout flourishes for
+              human review.
+            </p>
+            <button (click)="exportModernPdf()" class="btn btn-outline-primary btn-sm">
+              Export modern PDF
+            </button>
+          </div>
+          <div class="action-card">
+            <span class="icon-square"
+              ><i class="fa-solid fa-link" aria-hidden="true"></i
+            ></span>
+            <h4>Shareable Link</h4>
+            <p>Create a private URL with analytics and access controls.</p>
+            <button (click)="createLink()" class="btn btn-outline-primary btn-sm">
+              Create link
+            </button>
+          </div>
+        </div>
+
+        <!-- Resume Versions -->
+        <div class="list-card mt-4">
+          <h3>Resume Versions</h3>
+          <ul>
+            <li *ngFor="let resume of resumeVersions">
+              <div>
+                <strong>{{ resume.title }}</strong>
+                <p class="mb-0 text-muted">
+                  Updated {{ resume.updated }} · Template: {{ resume.template }} · {{ resume.downloads }} downloads
+                </p>
+              </div>
+              <div class="d-flex flex-wrap gap-2">
+                <button class="btn btn-outline-primary btn-sm rounded-3">
+                  PDF
+                </button>
+                <button class="btn btn-outline-secondary btn-sm rounded-3">
+                  DOCX
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Share Links -->
+        <div class="list-card mt-4">
+          <h3>Share Links &amp; Access</h3>
+          <ul>
+            <li *ngFor="let link of shareLinks">
+              <div>
+                <strong>{{ link.title }}</strong>
+                <p class="mb-0 text-muted" *ngIf="link.url">
+                  {{ link.url }} · {{ link.views }} views · expires in {{ link.expires }}
+                </p>
+                <p class="mb-0 text-muted" *ngIf="link.requiresEmail">
+                  Requires email · analytics enabled
+                </p>
+              </div>
+              <div class="d-flex flex-wrap gap-2">
+                <button (click)="copyLink(link)" class="btn btn-outline-primary btn-sm rounded-3">
+                  Copy
+                </button>
+                <button *ngIf="link.url" (click)="disableLink(link)" class="btn btn-outline-danger btn-sm rounded-3">
+                  Disable
+                </button>
+                <button *ngIf="link.requiresEmail" class="btn btn-outline-secondary btn-sm rounded-3">
+                  Settings
+                </button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

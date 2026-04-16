@@ -6,9 +6,11 @@ import { JobsListComponent } from './pages/jobs/jobs-list/jobs-list.component';
 import { SignupComponent } from './pages/auth/signup/signup.component';
 import { PostJobComponent } from './pages/employer/post-job/post-job.component';
 import { EmployerSingleComponent } from './pages/employer/employer-single/employer-single.component';
+import { EmployerListComponent } from './pages/employer/employer-list/employer-list.component';
 import { CandidateEditProfileComponent } from './pages/candidate/edit-profile/candidate-edit-profile.component';
 import { CandidateBuildResumeComponent } from './pages/candidate/build-resume/candidate-build-resume.component';
 import { CandidateDashboardComponent } from './pages/candidate/dashboard/candidate-dashboard.component';
+import { DownloadCvComponent } from './pages/candidate/download-cv/download-cv.component';
 
 export const appRoutes: Routes = [
   { path: '', component: HomePageComponent },
@@ -21,6 +23,7 @@ export const appRoutes: Routes = [
 
   // Employer routes
   { path: 'post-job', component: PostJobComponent },
+  { path: 'employer-list', component: EmployerListComponent },
   { path: 'employer-single', component: EmployerSingleComponent },
   { path: 'company/:id', component: EmployerSingleComponent },
 
@@ -28,7 +31,7 @@ export const appRoutes: Routes = [
   { path: 'candidate/dashboard', component: CandidateDashboardComponent },
   { path: 'candidate/edit-profile', component: CandidateEditProfileComponent },
   { path: 'candidate/build-resume', component: CandidateBuildResumeComponent },
-  { path: 'candidate/download-cv', component: CandidateBuildResumeComponent },
+  { path: 'candidate/download-cv', component: DownloadCvComponent },
   { path: 'candidate/public-profile', component: CandidateBuildResumeComponent },
   { path: 'candidate/applications', component: CandidateBuildResumeComponent },
   { path: 'candidate/favourites', component: CandidateBuildResumeComponent },
