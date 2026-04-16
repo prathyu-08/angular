@@ -1,0 +1,153 @@
+<div class="page-wrapper page-content">
+
+  <!-- TOP BANNER -->
+  <div class="top-banner">
+    <div class="banner-content">
+
+      <div class="header">
+        <div class="header-left">
+          <span class="breadcrumb">Northwind Commerce</span>
+          <h2>Create a new opportunity</h2>
+          <p>
+            Share role details, requirements, and perks so the right candidates can find you faster.
+          </p>
+        </div>
+
+        <button class="back-btn">Back to Dashboard</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="main-wrapper">
+    <div class="dashboard">
+
+      <app-employer-sidebar></app-employer-sidebar>
+
+      <div class="content">
+
+        <div class="container">
+
+          <div class="card">
+
+            <div class="card-header">
+              <h3>Job overview</h3>
+              <p class="required">Fields marked * are required</p>
+            </div>
+
+            <form>
+
+              <!-- Role basics -->
+              <h4 class="section-title">Role basics</h4>
+
+              <div class="row">
+                <div class="field">
+                  <label>Job title *</label>
+                  <input placeholder="e.g. Senior Product Designer">
+                </div>
+
+                <div class="field">
+                  <label>Department</label>
+                  <input placeholder="Design Systems">
+                </div>
+
+                <div class="field">
+                  <label>Location *</label>
+                  <input placeholder="Hybrid · Seattle, USA">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="field">
+                  <label>Employment type</label>
+                  <select><option>Full Time</option></select>
+                </div>
+
+                <div class="field">
+                  <label>Salary range</label>
+                  <input placeholder="$90k - $120k / year">
+                </div>
+
+                <div class="field">
+                  <label>Seniority</label>
+                  <select><option>Lead / Principal</option></select>
+                </div>
+              </div>
+
+              <!-- Candidate preferences -->
+              <h4 class="section-title">Candidate preferences</h4>
+
+              <div class="row">
+                <div class="field">
+                  <label>Experience</label>
+                  <select><option>5+ years</option></select>
+                </div>
+
+                <div class="field">
+                  <label>Open roles</label>
+                  <input placeholder="1">
+                </div>
+
+                <div class="field">
+                  <label>Visa sponsorship</label>
+                  <select><option>Not available</option></select>
+                </div>
+              </div>
+
+              <!-- Role description -->
+              <h4 class="section-title">Role description</h4>
+
+              <div class="field">
+                <label>Summary *</label>
+                <textarea placeholder="Describe the mission for this role..."></textarea>
+              </div>
+
+              <div class="row">
+                <div class="field">
+                  <label>Responsibilities</label>
+                  <textarea placeholder="Use bullet points or short sentences"></textarea>
+                </div>
+
+                <div class="field">
+                  <label>Must-have skills</label>
+                  <textarea placeholder="List skills separated by commas"></textarea>
+                </div>
+              </div>
+
+              <!-- Publishing -->
+              <h4 class="section-title">Publishing</h4>
+
+              <div class="row">
+                <div class="field">
+                  <label>Application email</label>
+                  <input placeholder="talent@northwind.com">
+                </div>
+
+                <div class="field">
+                  <label>External apply link</label>
+                  <input placeholder="https://company.com/careers">
+                </div>
+              </div>
+
+              <label class="checkbox">
+                <input type="checkbox" checked>
+                <span>Allow quick apply inside Jobs Portal</span>
+              </label>
+
+              <div class="actions">
+                <button type="button" class="draft">Save Draft</button>
+                <button type="submit" class="publish">Publish Job</button>
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

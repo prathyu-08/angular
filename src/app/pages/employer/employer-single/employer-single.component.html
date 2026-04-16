@@ -1,0 +1,246 @@
+
+
+<!-- HERO BANNER -->
+<div class="hero-banner">
+  <img
+    src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1400&h=280&fit=crop"
+    alt="Office team"
+    class="hero-img"
+  />
+</div>
+
+<!-- COMPANY HEADER CARD -->
+<div class="container">
+  <div class="company-header-card">
+    <div class="company-logo-wrap">
+      <div class="company-logo">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="40" height="40">
+          <polygon points="20,4 36,12 36,28 20,36 4,28 4,12" fill="#e8f4fd" stroke="#4a9fd5" stroke-width="1.5"/>
+          <path d="M13 20 L20 11 L27 20" stroke="#e74c3c" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M13 26 L20 17 L27 26" stroke="#3498db" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+    <div class="company-info">
+      <span class="company-subtitle">Digital Experience Studio</span>
+      <h1 class="company-name">Skyline Digital</h1>
+      <div class="company-meta">
+        <span class="meta-item">📍 San Francisco, USA</span>
+        <span class="meta-item">👥 180+ team members</span>
+        <span class="meta-item">📅 Since 2014</span>
+      </div>
+    </div>
+    <div class="company-actions">
+      <button class="btn-outline-blue">
+        <span>🔔</span> Follow Company
+      </button>
+      <button class="btn-primary">
+        <span>👀</span> View Open Roles
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="container main-layout">
+
+  <!-- LEFT COLUMN -->
+  <div class="main-left">
+
+    <!-- WHO WE ARE -->
+    <section class="card">
+      <h2 class="section-title">Who We Are</h2>
+      <p class="body-text">
+        Skyline Digital is a multidisciplinary studio building immersive product experiences for finance,
+        ecommerce, and emerging tech brands. We combine research-led design with battle-tested
+        engineering to launch products that scale across millions of users.
+      </p>
+      <p class="body-text">
+        Our teams operate with a maker-first culture: weekly design critiques, shared ownership of roadmaps,
+        and space to iterate rapidly so we can keep pushing what digital experiences can be.
+      </p>
+    </section>
+
+    <!-- WHAT WE VALUE -->
+    <section class="card">
+      <h2 class="section-title">What We Value</h2>
+      <div class="value-tags">
+        <span *ngFor="let v of companyValues" class="value-tag">
+          {{ v.icon }} {{ v.label }}
+        </span>
+      </div>
+    </section>
+
+    <!-- LIFE AT SKYLINE -->
+    <section class="card">
+      <h2 class="section-title">Life at Skyline</h2>
+      <div class="perks-grid">
+        <div *ngFor="let perk of lifePerks" class="perk-item">
+          <div class="perk-icon">
+            <span *ngIf="perk.icon === 'remote'">✈️</span>
+            <span *ngIf="perk.icon === 'learning'">🎓</span>
+            <span *ngIf="perk.icon === 'health'">💪</span>
+            <span *ngIf="perk.icon === 'growth'">📈</span>
+          </div>
+          <h3 class="perk-title">{{ perk.title }}</h3>
+          <p class="perk-desc">{{ perk.desc }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSIDE OUR STUDIOS -->
+    <section class="card">
+      <h2 class="section-title">Inside Our Studios</h2>
+      <p class="body-text">Take a peek at some of our favourite moments across Skyline hubs and remote retreats.</p>
+      <div class="studio-gallery">
+        <div *ngFor="let img of studioImages; let i = index"
+             class="gallery-item"
+             [class.gallery-item-wide]="i === 3">
+          <img [src]="img" [alt]="'Studio image ' + (i+1)" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /main-left -->
+
+  <!-- RIGHT SIDEBAR -->
+  <aside class="main-right">
+
+    <!-- COMPANY SNAPSHOT -->
+    <div class="card sidebar-card">
+      <h3 class="sidebar-title">Company Snapshot</h3>
+      <ul class="snapshot-list">
+        <li class="snapshot-item">
+          <span class="snap-icon">🌐</span>
+          <div>
+            <div class="snap-label">Website</div>
+            <a href="#" class="snap-link">skylinedigital.com</a>
+          </div>
+        </li>
+        <li class="snapshot-item">
+          <span class="snap-icon">🏭</span>
+          <div>
+            <div class="snap-label">Industry</div>
+            <div class="snap-value">Product Design &amp; Engineering</div>
+          </div>
+        </li>
+        <li class="snapshot-item">
+          <span class="snap-icon">🏢</span>
+          <div>
+            <div class="snap-label">Departments</div>
+            <div class="snap-value">Design, Engineering, Research</div>
+          </div>
+        </li>
+        <li class="snapshot-item">
+          <span class="snap-icon">📍</span>
+          <div>
+            <div class="snap-label">Offices</div>
+            <div class="snap-value">SF · Berlin · Singapore · Remote</div>
+          </div>
+        </li>
+        <li class="snapshot-item">
+          <span class="snap-icon">📊</span>
+          <div>
+            <div class="snap-label">Growth</div>
+            <div class="snap-value">45% YoY revenue</div>
+          </div>
+        </li>
+      </ul>
+      <div class="social-icons">
+        <a href="#" class="social-btn linkedin">in</a>
+        <a href="#" class="social-btn instagram">✦</a>
+        <a href="#" class="social-btn twitter">𝕏</a>
+        <a href="#" class="social-btn youtube">▶</a>
+      </div>
+    </div>
+
+    <!-- GET IN TOUCH -->
+    <div class="card sidebar-card">
+      <h3 class="sidebar-title">Get In Touch</h3>
+      <form (ngSubmit)="onSendMessage()" #contactFormRef="ngForm">
+        <div class="form-group">
+          <label class="form-label">Full name</label>
+          <input
+            type="text"
+            class="form-input"
+            placeholder="Jordan Blake"
+            [(ngModel)]="contactForm.fullName"
+            name="fullName"
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Work email</label>
+          <input
+            type="email"
+            class="form-input"
+            placeholder="you@company.com"
+            [(ngModel)]="contactForm.workEmail"
+            name="workEmail"
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea
+            class="form-textarea"
+            placeholder="Tell us how we can collaborate..."
+            [(ngModel)]="contactForm.message"
+            name="message"
+            rows="4"
+          ></textarea>
+        </div>
+        <button type="submit" class="btn-send-message">Send Message</button>
+      </form>
+    </div>
+
+    <!-- STUDIO LOCATIONS -->
+    <div class="card sidebar-card">
+      <h3 class="sidebar-title">Studio Locations</h3>
+      <div class="map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.305935303!2d-74.25986548248684!3d40.69714941932609!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2s!4v1616161616161!5m2!1sen!2s"
+          width="100%"
+          height="180"
+          style="border:0; border-radius: 8px;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Studio Locations Map">
+        </iframe>
+      </div>
+    </div>
+
+  </aside><!-- /main-right -->
+
+</main><!-- /main-layout -->
+
+<!-- OPEN ROLES SECTION -->
+<section class="open-roles-section">
+  <div class="container">
+    <div class="roles-header">
+      <div>
+        <h2 class="roles-title">Open Roles</h2>
+        <p class="roles-sub">We're hiring across design, engineering, and strategy. Join our fully distributed team.</p>
+      </div>
+      <button class="btn-refer">✉ Refer a Friend</button>
+    </div>
+    <div class="roles-grid">
+      <div *ngFor="let role of openRoles" class="role-card">
+        <div class="role-card-top">
+          <span class="role-badge" [ngClass]="role.typeClass">{{ role.type }}</span>
+          <span *ngIf="role.urgent" class="urgent-badge">⚡</span>
+        </div>
+        <h3 class="role-title">{{ role.title }}</h3>
+        <p class="role-salary">Salary: {{ role.salary }}</p>
+        <p class="role-location">📍 {{ role.location }}</p>
+        <div class="role-footer">
+          <div class="company-logo-sm">
+            <svg viewBox="0 0 24 24" fill="none" width="20" height="20">
+              <polygon points="12,2 22,7 22,17 12,22 2,17 2,7" fill="#e8f4fd" stroke="#4a9fd5" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <span class="role-posted">Posted {{ role.posted }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

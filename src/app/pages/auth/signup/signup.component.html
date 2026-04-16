@@ -1,0 +1,154 @@
+<div class="signup-wrapper">
+
+  <div class="signup-container">
+
+    <!-- LEFT SIDE -->
+    <div class="left">
+      <div class="content">
+
+        <div class="badge-pill">CREATE ACCOUNT</div>
+
+        <h1>
+          Join thousands of <br>
+          professionals hiring <br>
+          and getting hired
+        </h1>
+
+        <p>
+          Build a profile that stands out, connect with employers, and unlock tailored recommendations to accelerate your career journey.
+        </p>
+
+        <ul class="features">
+          <li><span>✔</span> Access curated jobs from verified companies</li>
+          <li><span>✔</span> Showcase your portfolio and skill badges</li>
+          <li><span>✔</span> Collaborate with hiring teams in real time</li>
+        </ul>
+
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="right">
+      <div class="card">
+
+        <h2>Create your free account</h2>
+        <p class="sub">Start as a candidate or employer. Switch anytime.</p>
+
+        <!-- SOCIAL -->
+        <div class="social">
+          <button type="button"><span>G</span> Sign up with Google</button>
+          <button type="button"><span>in</span> Sign up with LinkedIn</button>
+        </div>
+
+        <div class="divider">OR</div>
+
+        <!-- TOGGLE -->
+        <div class="toggle">
+          <button type="button"
+            [class.active]="type==='candidate'" 
+            (click)="type='candidate'">
+            Candidate
+          </button>
+          <button type="button"
+            [class.active]="type==='employer'" 
+            (click)="type='employer'">
+            Employer
+          </button>
+        </div>
+
+        <!-- CANDIDATE FORM -->
+        <form *ngIf="type==='candidate'" (submit)="$event.preventDefault()">
+
+          <div class="row">
+            <div class="field">
+              <label>First name</label>
+              <input type="text" placeholder="Samantha">
+            </div>
+            <div class="field">
+              <label>Last name</label>
+              <input type="text" placeholder="Jenkins">
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Email address</label>
+            <input type="email" placeholder="name@email.com">
+          </div>
+
+          <div class="field">
+            <label>Password</label>
+            <input type="password" placeholder="Create a strong password">
+          </div>
+
+          <div class="field">
+            <label>Desired role</label>
+            <select>
+              <option>Product Designer</option>
+              <option>Software Engineer</option>
+            </select>
+          </div>
+
+          <label class="check">
+            <input type="checkbox">
+            <span>
+              I agree to the <b>Terms of Service</b> and <b>Privacy Policy</b>
+            </span>
+          </label>
+
+          <button class="primary" type="submit">Create Candidate Account</button>
+        </form>
+
+        <!-- EMPLOYER FORM -->
+        <form *ngIf="type==='employer'" (submit)="$event.preventDefault()">
+
+          <div class="field">
+            <label>Company name</label>
+            <input type="text" placeholder="Acme Studios">
+          </div>
+
+          <div class="field">
+            <label>Website</label>
+            <input type="text" placeholder="https://yourcompany.com">
+          </div>
+
+          <div class="field">
+            <label>Work email</label>
+            <input type="email" placeholder="you@company.com">
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <label>Password</label>
+              <input type="password" placeholder="Create a strong password">
+            </div>
+            <div class="field">
+              <label>Team size</label>
+              <select>
+                <option>1-10 employees</option>
+              </select>
+            </div>
+          </div>
+
+          <label class="check">
+            <input type="checkbox">
+            <span>
+              I agree to the <b>Terms of Service</b> and <b>Privacy Policy</b>
+            </span>
+          </label>
+
+          <button class="primary" type="submit">Create Employer Account</button>
+        </form>
+
+        <p class="signin">
+          Already have an account? 
+          <span routerLink="/login" style="cursor:pointer; color:blue;">
+            Sign in
+          </span>
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

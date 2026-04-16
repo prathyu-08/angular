@@ -1,0 +1,264 @@
+/* CONTAINER */
+.login-container {
+  display: flex;
+  min-height: 100vh;
+  background: linear-gradient(
+    120deg,
+    #eef2ff 0%,
+    #f8fafc 40%,
+    #e0f2fe 100%
+  );
+  font-family: 'Inter', sans-serif;
+  align-items: center;
+  justify-content: space-between;
+  padding: 120px 140px 40px;
+}
+
+/* LEFT SIDE */
+.left {
+  
+  max-width: 520px;
+  display: flex;              /* 🔥 add this */
+  flex-direction: column;     /* stack items */
+  align-items: flex-start;    /* 🔥 KEY FIX */
+}
+
+/* TOP BAR */
+.top-bar {
+  display: flex;
+  align-items: center;
+
+  width: 100%;                 /* 🔥 full width */
+  max-width: 520px;           /* 🔥 same as left section */
+  
+  padding: 10px 24px;
+
+  background: rgba(199, 210, 254, 0.35);
+  backdrop-filter: blur(10px);
+
+  border-radius: 999px;       /* pill shape */
+}
+
+/* Text inside */
+.top-bar p {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #2563eb;
+}
+
+
+/* HEADING */
+.left h1 {
+  font-size: 50px;
+  font-weight: 900;
+  line-height: 1.1;
+  margin: 20px 0;   /* 🔥 spacing fix */
+}
+
+/* DESCRIPTION */
+.desc {
+  margin: 10px 0 10px;
+  color: #6b7280;
+  font-size: 16px;
+  line-height: 1.6;
+  
+  
+}
+
+/* LIST */
+.left ul {
+  list-style: none;
+  padding: 0;
+}
+
+.left li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  color: #374151;
+  font-size: 15px;
+}
+
+/* TICK ICON */
+.tick {
+  background: #22c55e;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  margin-right: 12px;
+}
+
+/* RIGHT CARD */
+.right {
+  width: 420px;
+  background: #ffffff; /* 🔥 pure white like design */
+  box-shadow: 0 30px 60px rgba(0,0,0,0.08); /* softer */
+  backdrop-filter: blur(20px);
+  padding: 50px 40px;
+  border-radius: 28px;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.12);
+}
+
+/* HEADINGS */
+.right h2 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.sub {
+  font-size: 15px;
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+/* SOCIAL BUTTONS */
+.social-row {
+  display: flex;
+  gap: 10px;
+}
+
+.social {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  background: #f8fafc;              /* 🔥 light grey */
+  border: 1px solid #dbeafe;
+  font-size: 14px;
+  font-weight: 500;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  height: 44px;
+  box-sizing: border-box;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* 🔥 important */
+}
+
+.social:hover {
+  background: #ffffff;
+  border-color: #2563eb;
+  transform: translateY(-3px); /* 🔥 lift up */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* 🔥 depth */
+}
+
+/* DIVIDER */
+.divider {
+  display: flex;              /* 🔥 IMPORTANT */
+  align-items: center;        /* vertical center */
+  text-align: center;
+  margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+.divider span {
+  margin: 0 10px;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* INPUTS */
+.right label {
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 10px;
+  display: block;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb; /* 🔥 key fix */
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+input:focus {
+  background: #fff;
+  border-color: #2563eb;
+}
+
+/* PASSWORD ROW */
+.password-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.password-row a {
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.password-row a:hover {
+  text-decoration: underline;
+}
+
+/* REMEMBER */
+.remember {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  margin: 10px 0;
+}
+
+.remember input {
+  width: auto;
+}
+
+/* LOGIN BUTTON */
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(to right,  #1e40af ,#2563eb);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+}
+
+.login-btn:hover {
+  opacity: 0.9;
+}
+
+/* REGISTER TEXT */
+.register-text {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.register-text a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.register-text a:hover {
+  text-decoration: underline;
+}
