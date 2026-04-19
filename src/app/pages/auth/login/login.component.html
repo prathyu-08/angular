@@ -3,9 +3,8 @@
   <!-- LEFT -->
   <div class="left">
     <div class="top-bar">
-      <p >WELCOME BACK</p>
+      <p>WELCOME BACK</p>
     </div>
-    
 
     <h1>Log in to continue your job search</h1>
 
@@ -27,12 +26,12 @@
     <p class="sub">Enter your details below or continue with a social account.</p>
 
     <div class="social-row">
-      <button class="social">
+      <button type="button" class="social">
         <img src="https://img.icons8.com/color/16/google-logo.png"/>
         Login with Google
       </button>
 
-      <button class="social">
+      <button type="button" class="social">
         <img src="https://img.icons8.com/color/16/linkedin.png"/>
         Login with LinkedIn
       </button>
@@ -42,26 +41,48 @@
       <span>OR</span>
     </div>
 
-    <label>Email address</label>
-    <input type="email" placeholder="name@email.com" />
+    <!-- ✅ FORM START -->
+    <form (ngSubmit)="login()">
 
-    <div class="password-row">
-      <label>Password</label>
-      <a href="#">Forgot password?</a>
-    </div>
+      <label>Email address</label>
+      <input 
+        type="email"
+        [(ngModel)]="loginData.email"
+        name="email"
+        placeholder="name@email.com"
+        required
+      />
 
-    <input type="password" placeholder="********" />
+      <div class="password-row">
+        <label>Password</label>
+        <a href="#">Forgot password?</a>
+      </div>
 
-    <div class="remember">
-      <input type="checkbox" />
-      <span>Keep me signed in</span>
-    </div>
+      <input 
+        type="password"
+        [(ngModel)]="loginData.password"
+        name="password"
+        placeholder="********"
+        required
+      />
 
-    <button class="login-btn">Sign In</button>
+      <div class="remember">
+        <input type="checkbox" />
+        <span>Keep me signed in</span>
+      </div>
+
+      <button class="login-btn" type="submit">
+        Sign In
+      </button>
+
+    </form>
+    <!-- ✅ FORM END -->
 
     <p class="register-text">
-      New to JobsPortal? <a routerLink="/signup">Create an account</a>
+      New to JobsPortal? 
+      <a routerLink="/signup">Create an account</a>
     </p>
+
   </div>
 
 </div>

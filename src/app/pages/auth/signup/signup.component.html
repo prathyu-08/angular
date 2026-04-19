@@ -15,40 +15,31 @@
         </h1>
 
         <p>
-          Build a profile that stands out, connect with employers, and unlock tailored recommendations to accelerate your career journey.
+          Build a profile that stands out, connect with employers, and unlock tailored recommendations.
         </p>
 
         <ul class="features">
-          <li><span>✔</span> Access curated jobs from verified companies</li>
-          <li><span>✔</span> Showcase your portfolio and skill badges</li>
-          <li><span>✔</span> Collaborate with hiring teams in real time</li>
+          <li><span>✔</span> Access curated jobs</li>
+          <li><span>✔</span> Showcase your skills</li>
+          <li><span>✔</span> Connect with employers</li>
         </ul>
 
       </div>
     </div>
 
-    <!-- RIGHT SIDE -->
+    <!-- RIGHT -->
     <div class="right">
       <div class="card">
 
         <h2>Create your free account</h2>
-        <p class="sub">Start as a candidate or employer. Switch anytime.</p>
 
-        <!-- SOCIAL -->
-        <div class="social">
-          <button type="button"><span>G</span> Sign up with Google</button>
-          <button type="button"><span>in</span> Sign up with LinkedIn</button>
-        </div>
-
-        <div class="divider">OR</div>
-
-        <!-- TOGGLE -->
         <div class="toggle">
           <button type="button"
             [class.active]="type==='candidate'" 
             (click)="type='candidate'">
             Candidate
           </button>
+
           <button type="button"
             [class.active]="type==='employer'" 
             (click)="type='employer'">
@@ -56,95 +47,213 @@
           </button>
         </div>
 
-        <!-- CANDIDATE FORM -->
-        <form *ngIf="type==='candidate'" (submit)="$event.preventDefault()">
+        <!-- ================= CANDIDATE ================= -->
+        <form #candidateForm="ngForm" *ngIf="type==='candidate'" (ngSubmit)="register()">
 
           <div class="row">
             <div class="field">
               <label>First name</label>
-              <input type="text" placeholder="Samantha">
+              <input type="text" name="first_name"
+                [(ngModel)]="formData.first_name"
+                required minlength="2"
+                #fname="ngModel">
+              <p class="error" *ngIf="fname.invalid && fname.touched">
+                Minimum 2 characters required
+              </p>
             </div>
+
             <div class="field">
               <label>Last name</label>
-              <input type="text" placeholder="Jenkins">
+              <input type="text" name="last_name"
+                [(ngModel)]="formData.last_name"
+                required minlength="2"
+                #lname="ngModel">
+              <p class="error" *ngIf="lname.invalid && lname.touched">
+                Minimum 2 characters required
+              </p>
             </div>
           </div>
 
+          <!-- EMAIL -->
           <div class="field">
-            <label>Email address</label>
-            <input type="email" placeholder="name@email.com">
+            <label>User Email</label>
+            <input type="email"
+              name="email"
+              [(ngModel)]="formData.email"
+              required email
+              #email="ngModel">
+            <p class="error" *ngIf="email.invalid && email.touched">
+              Enter valid email ❌
+            </p>
           </div>
 
+          <!-- PASSWORD -->
           <div class="field">
             <label>Password</label>
-            <input type="password" placeholder="Create a strong password">
+
+            <div class="password-box">
+              <input 
+                [type]="showPassword ? 'text' : 'password'"
+                name="password"
+                [(ngModel)]="formData.password"
+                required minlength="6"
+                #pass="ngModel">
+
+              <span (click)="showPassword = !showPassword">
+                {{ showPassword ? '🙈' : '👁' }}
+              </span>
+            </div>
+
+            <p class="error" *ngIf="pass.invalid && pass.touched">
+              Min 6 characters required
+            </p>
+
+            <!-- Strength -->
+            <p class="strength" [ngClass]="passwordStrength">
+              Password strength: {{ passwordStrength }}
+            </p>
           </div>
 
+          <!-- CONFIRM PASSWORD -->
+          <div class="field">
+            <label>Confirm Password</label>
+            <input type="password"
+              name="confirm_password"
+              [(ngModel)]="formData.confirm_password"
+              required>
+          </div>
+
+          <p class="error" *ngIf="!passwordsMatch()">
+            Passwords do not match ❌
+          </p>
+
+          <!-- ROLE -->
           <div class="field">
             <label>Desired role</label>
-            <select>
-              <option>Product Designer</option>
-              <option>Software Engineer</option>
+            <select name="desired_role"
+              [(ngModel)]="formData.desired_role"
+              required #role="ngModel">
+
+              <option value="">Select Role</option>
+              <option>Frontend Developer</option>
+              <option>Backend Developer</option>
+              <option>Full Stack Developer</option>
+              <option>Data Analyst</option>
+              <option>DevOps Engineer</option>
             </select>
+
+            <p class="error" *ngIf="role.invalid && role.touched">
+              Please select a role
+            </p>
           </div>
 
-          <label class="check">
-            <input type="checkbox">
-            <span>
-              I agree to the <b>Terms of Service</b> and <b>Privacy Policy</b>
-            </span>
-          </label>
+          <!-- API Messages -->
+          <p class="error" *ngIf="apiError">{{ apiError }}</p>
+          <p class="success" *ngIf="successMsg">{{ successMsg }}</p>
 
-          <button class="primary" type="submit">Create Candidate Account</button>
+          <!-- BUTTON -->
+          <button class="primary"
+            type="submit"
+            [disabled]="candidateForm.invalid || loading">
+
+            <span *ngIf="!loading">Create Candidate Account</span>
+            <span *ngIf="loading">Processing...</span>
+          </button>
+
         </form>
 
-        <!-- EMPLOYER FORM -->
-        <form *ngIf="type==='employer'" (submit)="$event.preventDefault()">
+        <!-- ================= EMPLOYER ================= -->
+        <form #empForm="ngForm" *ngIf="type==='employer'" (ngSubmit)="register()">
 
           <div class="field">
             <label>Company name</label>
-            <input type="text" placeholder="Acme Studios">
+            <input type="text"
+              name="company_name"
+              [(ngModel)]="employerData.company_name"
+              required minlength="2"
+              #company="ngModel">
+            <p class="error" *ngIf="company.invalid && company.touched">
+              Enter valid company name
+            </p>
           </div>
 
           <div class="field">
-            <label>Website</label>
-            <input type="text" placeholder="https://yourcompany.com">
-          </div>
-
-          <div class="field">
-            <label>Work email</label>
-            <input type="email" placeholder="you@company.com">
+            <label>User Email</label>
+            <input type="email"
+              name="email"
+              [(ngModel)]="employerData.email"
+              required email
+              #empEmail="ngModel">
+            <p class="error" *ngIf="empEmail.invalid && empEmail.touched">
+              Enter valid email ❌
+            </p>
           </div>
 
           <div class="row">
             <div class="field">
               <label>Password</label>
-              <input type="password" placeholder="Create a strong password">
+
+              <div class="password-box">
+                <input 
+                  [type]="showPassword ? 'text' : 'password'"
+                  name="password"
+                  [(ngModel)]="employerData.password"
+                  required minlength="6">
+
+                <span (click)="showPassword = !showPassword">
+                  {{ showPassword ? '🙈' : '👁' }}
+                </span>
+              </div>
+
+              <p class="strength" [ngClass]="passwordStrength">
+                Password strength: {{ passwordStrength }}
+              </p>
             </div>
+
             <div class="field">
-              <label>Team size</label>
-              <select>
-                <option>1-10 employees</option>
-              </select>
+              <label>Confirm Password</label>
+              <input type="password"
+                name="confirm_password"
+                [(ngModel)]="employerData.confirm_password"
+                required>
             </div>
           </div>
 
-          <label class="check">
-            <input type="checkbox">
-            <span>
-              I agree to the <b>Terms of Service</b> and <b>Privacy Policy</b>
-            </span>
-          </label>
+          <p class="error" *ngIf="!passwordsMatch()">
+            Passwords do not match ❌
+          </p>
 
-          <button class="primary" type="submit">Create Employer Account</button>
+          <div class="field">
+            <label>Team size</label>
+            <select name="team_size"
+              [(ngModel)]="employerData.team_size"
+              required #team="ngModel">
+
+              <option value="">Select</option>
+              <option>1-10</option>
+              <option>10-50</option>
+              <option>50-100</option>
+              <option>100+</option>
+            </select>
+
+            <p class="error" *ngIf="team.invalid && team.touched">
+              Select team size
+            </p>
+          </div>
+
+          <!-- API Messages -->
+          <p class="error" *ngIf="apiError">{{ apiError }}</p>
+          <p class="success" *ngIf="successMsg">{{ successMsg }}</p>
+
+          <button class="primary"
+            type="submit"
+            [disabled]="empForm.invalid || loading">
+
+            <span *ngIf="!loading">Create Employer Account</span>
+            <span *ngIf="loading">Processing...</span>
+          </button>
+
         </form>
-
-        <p class="signin">
-          Already have an account? 
-          <span routerLink="/login" style="cursor:pointer; color:blue;">
-            Sign in
-          </span>
-        </p>
 
       </div>
     </div>

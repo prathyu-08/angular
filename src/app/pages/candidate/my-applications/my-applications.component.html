@@ -1,0 +1,162 @@
+<section class="dashboard-section">
+  <div class="container">
+    <div class="dashboard-layout">
+      <aside class="dashboard-sidebar">
+        <div class="sidebar-header">
+          <div class="status-toggle">
+            <div>
+              <span class="status-label">Open to Work</span>
+              <small class="status-note">Visible to recruiters</small>
+            </div>
+            <label class="status-switch" aria-label="Toggle open to work">
+              <input type="checkbox" checked />
+              <span class="status-slider"></span>
+            </label>
+          </div>
+          <h2>Job Seeker</h2>
+          <p>jobseeker&#64;jobsportal.com</p>
+        </div>
+        <ul class="dashboard-nav">
+          <li>
+            <a routerLink="/candidate/dashboard"
+              ><i class="fa-solid fa-gauge"></i> Dashboard</a
+            >
+          </li>
+          <li>
+            <a routerLink="/candidate/edit-profile"
+              ><i class="fa-solid fa-user-pen"></i> Edit Profile</a
+            >
+          </li>
+          <li>
+            <a routerLink="/candidate/build-resume"
+              ><i class="fa-solid fa-id-badge"></i> Build Resume</a
+            >
+          </li>
+          <li>
+            <a routerLink="/candidate/download-cv"
+              ><i class="fa-solid fa-download"></i> Download CV</a
+            >
+          </li>
+          <li>
+            <a routerLink="/candidate/public-profile"
+              ><i class="fa-solid fa-eye"></i> View Public Profile</a
+            >
+          </li>
+          <li class="active">
+            <a routerLink="/candidate/applications"
+              ><i class="fa-solid fa-briefcase"></i> My Job Applications</a
+            >
+          </li>
+          <li>
+            <a routerLink="/candidate/favourites"
+              ><i class="fa-solid fa-heart"></i> My Favourite Jobs</a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><i class="fa-solid fa-bell"></i> Job Alerts</a
+            >
+          </li>
+          <li>
+            <a routerLink="/candidate/manage-resume"
+              ><i class="fa-solid fa-file-pen"></i> Manage Resume</a
+            >
+          </li>
+          <li>
+            <a routerLink="/candidate/messages"
+              ><i class="fa-solid fa-envelope"></i> My Messages</a
+            >
+          </li>
+          <li>
+            <a routerLink="/candidate/followings"
+              ><i class="fa-solid fa-people-group"></i> My Followings</a
+            >
+          </li>
+          <li>
+            <a routerLink="/candidate/packages"
+              ><i class="fa-solid fa-boxes-stacked"></i> Packages</a
+            >
+          </li>
+          <li>
+            <a routerLink="/candidate/payments"
+              ><i class="fa-solid fa-credit-card"></i> Payment History</a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><i class="fa-solid fa-right-from-bracket"></i> Logout</a
+            >
+          </li>
+        </ul>
+      </aside>
+
+      <div class="dashboard-main">
+        <!-- Page Header -->
+        <div class="dashboard-page-header">
+          <div>
+            <h1>My Job Applications</h1>
+            <p>Stay on top of every pipeline stage, feedback, and recruiter follow-up.</p>
+          </div>
+          <div class="d-flex flex-wrap gap-2">
+            <button (click)="onFilter()" class="btn btn-outline-primary">
+              <i class="fa-solid fa-filter" aria-hidden="true"></i> Filters
+            </button>
+            <button (click)="onSync()" class="btn btn-primary">
+              <i class="fa-solid fa-arrow-rotate-right" aria-hidden="true"></i> Sync updates
+            </button>
+          </div>
+        </div>
+
+        <!-- Application Grid -->
+        <div class="row row-cols-1 row-cols-lg-2 g-4 application-grid">
+          <div class="col" *ngFor="let app of applications">
+            <div class="application-card">
+              <div class="application-header">
+                <span class="status-chip" [ngClass]="app.status">{{ app.statusLabel }}</span>
+              </div>
+              <div class="application-title">
+                <h4><a routerLink="/job-single">{{ app.title }}</a></h4>
+                <div class="application-location">
+                  <i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ app.location }}
+                </div>
+                <p>{{ app.company }} · {{ app.team }}</p>
+              </div>
+              <div class="application-pill">
+                <i class="fa-solid {{ app.pillIcon }}" aria-hidden="true"></i> {{ app.pillText }}
+              </div>
+              <div class="application-footer">
+                <div class="application-meta">
+                  <div class="meta-avatar">
+                    <img [src]="app.companyLogo" [alt]="app.company" />
+                  </div>
+                  <div>
+                    <span class="meta-label" *ngIf="app.appliedDays > 0">Applied {{ app.appliedDays }} days ago</span>
+                    <span class="meta-label" *ngIf="app.appliedDays === 0">Applied {{ app.appliedDate }}</span>
+                    <span class="meta-value">{{ app.source }}</span>
+                  </div>
+                </div>
+                <a [href]="app.actionUrl" class="btn btn-sm rounded-pill" [ngClass]="app.isArchived ? 'btn-outline-secondary' : 'btn-outline-primary'">
+                  {{ app.actionLabel }}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Next Steps -->
+        <div class="list-card mt-4">
+          <h3>Next Steps</h3>
+          <ul>
+            <li *ngFor="let step of nextSteps">
+              <div>
+                <strong>{{ step.title }}</strong>
+                <p class="mb-0 text-muted">{{ step.description }}</p>
+              </div>
+              <button class="btn btn-outline-primary btn-sm rounded-3">{{ step.buttonLabel }}</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -11,6 +11,7 @@ import { CandidateEditProfileComponent } from './pages/candidate/edit-profile/ca
 import { CandidateBuildResumeComponent } from './pages/candidate/build-resume/candidate-build-resume.component';
 import { CandidateDashboardComponent } from './pages/candidate/dashboard/candidate-dashboard.component';
 import { DownloadCvComponent } from './pages/candidate/download-cv/download-cv.component';
+import { MyApplicationsComponent } from './pages/candidate/my-applications/my-applications.component';
 
 export const appRoutes: Routes = [
   { path: '', component: HomePageComponent },
@@ -32,8 +33,8 @@ export const appRoutes: Routes = [
   { path: 'candidate/edit-profile', component: CandidateEditProfileComponent },
   { path: 'candidate/build-resume', component: CandidateBuildResumeComponent },
   { path: 'candidate/download-cv', component: DownloadCvComponent },
+  { path: 'candidate/applications', component: MyApplicationsComponent },
   { path: 'candidate/public-profile', component: CandidateBuildResumeComponent },
-  { path: 'candidate/applications', component: CandidateBuildResumeComponent },
   { path: 'candidate/favourites', component: CandidateBuildResumeComponent },
   { path: 'candidate/manage-resume', component: CandidateBuildResumeComponent },
   { path: 'candidate/messages', component: CandidateBuildResumeComponent },

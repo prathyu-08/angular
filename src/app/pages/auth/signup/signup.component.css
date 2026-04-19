@@ -364,3 +364,45 @@ input:hover:not(:focus), select:hover:not(:focus) {
   color: #1d4ed8;
   text-decoration: underline;
 }
+
+/* ERROR MESSAGE */
+.error {
+  color: #dc2626;
+  font-size: 13px;
+  margin-top: -8px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+/* PASSWORD BOX */
+.password-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-box span {
+  position: absolute;
+  right: 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* PASSWORD STRENGTH */
+.strength {
+  font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+.strength.weak { color: #dc2626; }
+.strength.medium { color: #f59e0b; }
+.strength.strong { color: #16a34a; }
+
+/* SUCCESS MESSAGE */
+.success {
+  color: #16a34a;
+  font-size: 13px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}

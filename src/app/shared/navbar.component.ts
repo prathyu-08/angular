@@ -211,7 +211,7 @@ export class NavbarComponent {
         { label: 'Build Resume', route: '/candidate/build-resume' },
         { label: 'Download CV', route: '/candidate/download-cv' },
         { label: 'View Public Profile', route: '/candidate/build-resume' },
-        { label: 'My Job Applications', route: '/candidate/build-resume' },
+        { label: 'My Job Applications', route: '/candidate/applications' },
         { label: 'My Favourite Jobs', route: '/candidate/build-resume' },
         { label: 'Job Alerts', route: '/candidate/build-resume' },
         { label: 'Manage Resume', route: '/candidate/build-resume' },
